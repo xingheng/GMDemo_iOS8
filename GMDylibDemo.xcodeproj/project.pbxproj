@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		686D617519F63B0A00AD1FE0 /* GMDylibDemo.h in Headers */ = {isa = PBXBuildFile; fileRef = 686D617419F63B0A00AD1FE0 /* GMDylibDemo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686D617F19F63B0A00AD1FE0 /* GMDylibDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686D617E19F63B0A00AD1FE0 /* GMDylibDemoTests.m */; };
+		686D618A19F63C1700AD1FE0 /* MyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 686D618819F63C1700AD1FE0 /* MyViewController.h */; };
+		686D618B19F63C1700AD1FE0 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686D618919F63C1700AD1FE0 /* MyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,9 @@
 		686D617A19F63B0A00AD1FE0 /* GMDylibDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMDylibDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		686D617D19F63B0A00AD1FE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686D617E19F63B0A00AD1FE0 /* GMDylibDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMDylibDemoTests.m; sourceTree = "<group>"; };
+		686D618819F63C1700AD1FE0 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		686D618919F63C1700AD1FE0 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		686D618D19F6430900AD1FE0 /* GMDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				686D617419F63B0A00AD1FE0 /* GMDylibDemo.h */,
+				686D618D19F6430900AD1FE0 /* GMDelegate.h */,
+				686D618C19F642B800AD1FE0 /* Classes */,
 				686D617219F63B0A00AD1FE0 /* Supporting Files */,
 			);
 			path = GMDylibDemo;
@@ -90,6 +97,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		686D618C19F642B800AD1FE0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				686D618819F63C1700AD1FE0 /* MyViewController.h */,
+				686D618919F63C1700AD1FE0 /* MyViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -98,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				686D617519F63B0A00AD1FE0 /* GMDylibDemo.h in Headers */,
+				686D618A19F63C1700AD1FE0 /* MyViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				686D618B19F63C1700AD1FE0 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +315,7 @@
 		686D618319F63B0A00AD1FE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/OutFramework";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -312,6 +331,7 @@
 		686D618419F63B0A00AD1FE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/OutFramework";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
