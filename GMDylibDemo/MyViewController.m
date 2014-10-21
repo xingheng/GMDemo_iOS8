@@ -7,6 +7,7 @@
 //
 
 #import "MyViewController.h"
+#import "GMDelegate.h"
 
 #define kTableViewIdentifier        @"kTableViewIdentifier"
 
@@ -15,8 +16,8 @@
     NSMutableArray *dataSource;
 }
 
+@property (nonatomic, strong) id<GMDelegate> delegate;
 @property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) UIButton *myButton;
 
 @end
 
@@ -27,19 +28,40 @@
     // Do any additional setup after loading the view.
     
     self.myTableView = [[UITableView alloc] initWithFrame:self.view.frame];
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
     [self.view addSubview:self.myTableView];
     
-    self.myButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.myButton.center = self.view.center;
-    [self.myButton setTitle:@"Refresh" forState:UIControlStateNormal];
-    [self.myButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.myButton];
+    UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    refreshBtn.frame = CGRectMake(0, 0, 100, 50);
+    refreshBtn.center = self.view.center;
+    refreshBtn.backgroundColor = [UIColor lightGrayColor];
+    [refreshBtn setTitle:@"Refresh" forState:UIControlStateNormal];
+    [refreshBtn addTarget:self action:@selector(refreshButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:refreshBtn];
+    
+    UIButton *addNewBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    addNewBtn.frame = CGRectMake(0, 0, 100, 50);
+    addNewBtn.center = CGPointMake(refreshBtn.center.x, refreshBtn.center.y + 100);
+    addNewBtn.backgroundColor = [UIColor lightGrayColor];
+    [addNewBtn setTitle:@"Add a new" forState:UIControlStateNormal];
+    [addNewBtn addTarget:self action:@selector(addNewButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addNewBtn];
     
     [self refresh];
 }
 
-- (void)buttonClick:(id)sender
+- (void)refreshButtonClick:(id)sender
 {
+    [self refresh];
+}
+
+- (void)addNewButton:(id)sender
+{
+    NSString *lastObj = [dataSource lastObject];
+    NSInteger newObj = [lastObj integerValue] + 1;
+    [self.delegate addNewObject:[NSString stringWithFormat:@"%ld", (long)newObj]];
+    
     [self refresh];
 }
 
@@ -51,6 +73,8 @@
         dataSource = [[NSMutableArray alloc] initWithArray:arr];
     else
         NSLog(@"error: %@", err);
+    
+    [self.myTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +82,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 
+#pragma mark - DelegateSetter
+
+- (void)setGMDelegate:(id<GMDelegate>)obj
+{
+    NSLog(@"MyViewController - GMDelegate: %@", obj);
+    self.delegate = obj;
+}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

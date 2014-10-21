@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Wei Han. All rights reserved.
 //
 
-#import "GMDylibDemo.h"
+#import <UIKit/UIKit.h>
 
 #ifndef GMDylibDemo_GMDelegate_h
 #define GMDylibDemo_GMDelegate_h
@@ -14,6 +14,8 @@
 @protocol GMDelegate <NSObject>
 
 - (NSArray *)loadData:(NSError **)error;
+
+- (void)addNewObject:(NSObject *)newObj;
 
 @end
 

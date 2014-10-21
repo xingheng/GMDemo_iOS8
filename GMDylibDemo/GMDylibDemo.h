@@ -16,4 +16,6 @@ FOUNDATION_EXPORT const unsigned char GMDylibDemoVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <GMDylibDemo/PublicHeader.h>
 
+#import "GMDelegate.h"
+#import "UIViewController+DelegateSetter.h"
 
