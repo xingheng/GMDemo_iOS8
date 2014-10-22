@@ -1,16 +1,15 @@
 //
 //  ViewController.m
-//  DemoUITest
+//  GMAppDemo
 //
 //  Created by WeiHan on 10/21/14.
 //  Copyright (c) 2014 Wei Han. All rights reserved.
 //
 
 #import "ViewController.h"
-#import <objc/objc-runtime.h>
-#import "GMPublic.h"
+#import "GMViewController.h"
 
-@interface ViewController ()<GMDelegate>
+@interface ViewController ()
 {
     NSMutableArray *dataSource;
 }
@@ -39,19 +38,9 @@
 
 - (void)buttonClick:(id)sender
 {
-    Class gmViewController = objc_getClass("MyViewController");
-    NSLog(@"%@ MyViewController.", gmViewController ? @"found" : @"missed");
+    GMViewController *gmVC = [[GMViewController alloc] initwithVCName:@"MyViewController" delegate:self];
     
-    Protocol *protl = objc_getProtocol("GMDelegate");
-    NSLog(@"%@ GMDelegate.", protl ? @"found" : @"missed");
-    
-    objc_registerProtocol(protl);
-    
-    UIViewController *gmVC = [[gmViewController alloc] init];
-    
-    [gmVC setGMDelegate:self];
-    
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:gmVC];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:gmVC.destinationViewController];
     [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
