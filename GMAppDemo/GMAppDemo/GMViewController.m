@@ -24,9 +24,8 @@
 - (id)initwithVCName:(NSString *)vcName
             delegate:(id)delegate
 {
-    const char *library = "/Users/hanwei/work/GMDemo/GMDylibDemo/OutFramework/GMDylibDemo.framework/GMDylibDemo";
-    
-    if ([GMFrameworkLoader loadFramework:library])
+//    if ([GMFrameworkLoader loadFrameworkWithCString:"/Users/hanwei/work/GMDemo/GMDylibDemo/OutFramework/GMDylibDemo.framework/GMDylibDemo"])
+    if ([GMFrameworkLoader loadFrameworkWithBundlePath:@"/Users/hanwei/work/GMDemo/GMDylibDemo/OutFramework/GMDylibDemo.framework"])
     {
         [self loadDestinationClass];
         if (delegate)

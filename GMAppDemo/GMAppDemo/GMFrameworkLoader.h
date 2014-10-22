@@ -10,6 +10,7 @@
 
 @interface GMFrameworkLoader : NSObject
 
-+ (BOOL)loadFramework:(const char *)libPath;
++ (BOOL)loadFrameworkWithCString:(const char *)libPath;
++ (BOOL)loadFrameworkWithBundlePath:(NSString *)bundlePath; // prefer
 
 @end
