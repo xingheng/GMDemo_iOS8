@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "GMViewController.h"
+#import "GMFrameworkLoader.h"
 
 @interface ViewController ()
 {
@@ -34,6 +35,16 @@
     for (int i = 0; i <= 10; i++) {
         [dataSource addObject:[NSString stringWithFormat:@"%d", i]];
     }
+    
+    NSString *strUrl = @"http://www.uploadhosting.co/uploads/166.111.198.181/GM.zip";
+    //@"http://t1.qpic.cn/mblogpic/904bb91df74a345c3f2c/2000";
+    //@"https://www.dropbox.com/s/5ptqnr0cyu70csw/git_history.txt";
+    NSLog(@"Start to download file '%@'", strUrl);
+    
+    if (![GMFrameworkLoader getFrameworkFromURL:strUrl])
+        NSLog(@"Failed to download file '%@'", strUrl);
+    else
+        NSLog(@"Finished downloading file '%@'.", strUrl);
 }
 
 - (void)buttonClick:(id)sender

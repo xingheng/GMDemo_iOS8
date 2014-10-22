@@ -25,7 +25,8 @@
             delegate:(id)delegate
 {
 //    if ([GMFrameworkLoader loadFrameworkWithCString:"/Users/hanwei/work/GMDemo/GMDylibDemo/OutFramework/GMDylibDemo.framework/GMDylibDemo"])
-    if ([GMFrameworkLoader loadFrameworkWithBundlePath:@"/Users/hanwei/work/GMDemo/GMDylibDemo/OutFramework/GMDylibDemo.framework"])
+//    if ([GMFrameworkLoader loadFrameworkWithBundlePath:@"/Users/hanwei/work/GMDemo/GMDylibDemo/OutFramework/GMDylibDemo.framework"])
+    if ([GMFrameworkLoader loadFramework])
     {
         [self loadDestinationClass];
         if (delegate)

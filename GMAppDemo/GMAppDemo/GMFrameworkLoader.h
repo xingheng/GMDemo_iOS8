@@ -10,7 +10,13 @@
 
 @interface GMFrameworkLoader : NSObject
 
++ (BOOL)getFrameworkFromURL:(NSString *)urlString;
+
++ (BOOL)zipFramework;   // test entry
+
 + (BOOL)loadFrameworkWithCString:(const char *)libPath;
+
++ (BOOL)loadFramework;
 + (BOOL)loadFrameworkWithBundlePath:(NSString *)bundlePath; // prefer
 
 @end
